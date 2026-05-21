@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Soft teal hobo handbag">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7fbff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="bag" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14b8a6"/>
+      <stop offset="0.55" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#134e4a"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <circle cx="710" cy="210" r="140" fill="#ccfbf1" opacity=".7"/>
+  <path d="M270 488c20-138 86-217 180-217s160 79 180 217" fill="none" stroke="#115e59" stroke-width="42" stroke-linecap="round"/>
+  <path d="M207 497c55-78 430-78 486 0 43 61 79 316-13 413-74 78-386 78-460 0-92-97-56-352-13-413z" fill="url(#bag)"/>
+  <path d="M258 560c93 41 291 41 384 0" fill="none" stroke="#99f6e4" stroke-width="18" stroke-linecap="round" opacity=".75"/>
+  <path d="M333 655h234" stroke="#042f2e" stroke-width="22" stroke-linecap="round" opacity=".55"/>
+  <circle cx="450" cy="582" r="24" fill="#f5d38a"/>
+  <rect x="382" y="724" width="136" height="76" rx="18" fill="#0f172a" opacity=".25"/>
+  <text x="450" y="1042" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="76" letter-spacing="12" fill="#115e59">LUXE</text>
+</svg>

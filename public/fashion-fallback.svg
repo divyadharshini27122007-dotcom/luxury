@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="LUXE fashion image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/>
+      <stop offset="0.45" stop-color="#f4d4a4"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="dress" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e11d48"/>
+      <stop offset="0.55" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#0891b2"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <circle cx="450" cy="245" r="86" fill="#2f1f18"/>
+  <path d="M331 374c36-42 202-42 238 0l94 473c10 50-28 95-79 95H316c-51 0-89-45-79-95l94-473z" fill="url(#dress)"/>
+  <path d="M354 414h192l-54 161 118 300H290l118-300-54-161z" fill="#fff7ed" opacity=".26"/>
+  <path d="M302 455c-94 64-136 159-130 286" fill="none" stroke="#fff7ed" stroke-width="34" stroke-linecap="round" opacity=".8"/>
+  <path d="M598 455c94 64 136 159 130 286" fill="none" stroke="#fff7ed" stroke-width="34" stroke-linecap="round" opacity=".8"/>
+  <path d="M288 952h324" stroke="#fff7ed" stroke-width="24" stroke-linecap="round" opacity=".75"/>
+  <text x="450" y="1065" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="84" letter-spacing="14" fill="#fff7ed">LUXE</text>
+</svg>
