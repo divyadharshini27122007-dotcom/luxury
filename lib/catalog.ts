@@ -456,6 +456,12 @@ const curatedMarketplaceProducts: Record<string, Product[]> = {
   'luxury-handbags': handbagCollection,
 }
 
+export const searchableProducts: Product[] = [
+  ...catalogProducts,
+  ...menCollection,
+  ...handbagCollection,
+]
+
 const pageGroups = [
   {
     label: 'Departments',

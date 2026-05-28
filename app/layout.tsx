@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { CartProvider } from '@/components/cart-provider'
+import { ChatBot } from '@/components/chat-bot'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <CartProvider>
           {children}
+          <ChatBot />
         </CartProvider>
       </body>
     </html>
