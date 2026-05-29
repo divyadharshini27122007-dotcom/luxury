@@ -17,9 +17,20 @@ export function Navbar() {
   const headerBarClass = scrolled
     ? 'bg-background/80 backdrop-blur-lg border-b border-border shadow-sm'
     : 'bg-transparent'
+  const logoClass = scrolled
+    ? 'font-serif text-2xl font-semibold tracking-wider text-foreground'
+    : 'font-serif text-2xl font-semibold tracking-wider text-white drop-shadow-sm'
+  const headerLinkClass = scrolled
+    ? 'flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground'
+    : 'flex items-center gap-2 text-sm font-medium text-white/90 drop-shadow-sm hover:text-white'
+  const cartIconClass = scrolled ? 'h-5 w-5 text-foreground' : 'h-5 w-5 text-white drop-shadow-sm'
   const categoryBarClass = 'hidden border-t border-white/15 bg-transparent md:block'
-  const primaryCategoryLinkClass = 'font-medium text-foreground drop-shadow-sm hover:text-accent'
-  const categoryLinkClass = 'text-foreground/80 drop-shadow-sm hover:text-foreground'
+  const primaryCategoryLinkClass = scrolled
+    ? 'font-medium text-foreground drop-shadow-sm hover:text-accent'
+    : 'font-medium text-white drop-shadow-sm hover:text-accent'
+  const categoryLinkClass = scrolled
+    ? 'text-foreground/80 drop-shadow-sm hover:text-foreground'
+    : 'text-white/90 drop-shadow-sm hover:text-white'
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -41,7 +52,7 @@ export function Navbar() {
       <div className={headerBarClass}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex min-h-16 items-center justify-between gap-4 py-3">
-            <Link href="/" className="font-serif text-2xl font-semibold tracking-wider text-foreground">
+            <Link href="/" className={logoClass}>
               LUXE
             </Link>
 
@@ -62,17 +73,17 @@ export function Navbar() {
 
             <div className="flex items-center gap-4">
               <div className="hidden items-center gap-5 lg:flex">
-                <Link href="/marketplace/account-dashboard" className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground">
+                <Link href="/marketplace/account-dashboard" className={headerLinkClass}>
                   <User className="h-4 w-4" />
                   Account
                 </Link>
-                <Link href="/marketplace/orders-tracking" className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground">
+                <Link href="/marketplace/orders-tracking" className={headerLinkClass}>
                   <Package className="h-4 w-4" />
                   Orders
                 </Link>
               </div>
               <Link href="/cart" className="relative">
-                <ShoppingBag className="h-5 w-5 text-foreground" />
+                <ShoppingBag className={cartIconClass} />
                 {totalItems > 0 && (
                   <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center font-medium">
                     {totalItems}
