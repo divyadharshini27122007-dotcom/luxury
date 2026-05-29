@@ -1,7 +1,6 @@
 'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Category } from '@/lib/types'
 import { Button } from '@/components/ui/button'
 import {
   Select,
@@ -11,13 +10,27 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-interface ShopFiltersProps {
-  categories: Category[]
-}
+const mainCategoryOptions = [
+  { value: 'all', label: 'All', href: '/shop' },
+  { value: 'today-deals', label: "Today's Deals", href: '/marketplace/today-deals' },
+  { value: 'women', label: 'Women', href: '/shop?gender=women' },
+  { value: 'men', label: 'Men', href: '/shop?gender=men' },
+  { value: 'handbags', label: 'Handbags', href: '/shop?category=handbags' },
+  { value: 'gift-guide', label: 'Gift Guide', href: '/marketplace/gift-guide' },
+  { value: 'customer-service', label: 'Customer Service', href: '/marketplace/customer-service' },
+]
 
-export function ShopFilters({ categories }: ShopFiltersProps) {
+export function ShopFilters() {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const selectedMainCategory =
+    searchParams.get('category') === 'handbags'
+      ? 'handbags'
+      : searchParams.get('gender') === 'women'
+        ? 'women'
+        : searchParams.get('gender') === 'men'
+          ? 'men'
+          : 'all'
 
   const updateFilter = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -29,6 +42,11 @@ export function ShopFilters({ categories }: ShopFiltersProps) {
     router.push(`/shop?${params.toString()}`)
   }
 
+  const updateMainCategory = (value: string) => {
+    const selectedOption = mainCategoryOptions.find((option) => option.value === value)
+    router.push(selectedOption?.href || '/shop')
+  }
+
   const clearFilters = () => {
     router.push('/shop')
   }
@@ -38,17 +56,16 @@ export function ShopFilters({ categories }: ShopFiltersProps) {
   return (
     <div className="flex flex-wrap items-center gap-4 pb-6 border-b border-border">
       <Select
-        value={searchParams.get('category') || 'all'}
-        onValueChange={(value) => updateFilter('category', value)}
+        value={selectedMainCategory}
+        onValueChange={updateMainCategory}
       >
-        <SelectTrigger className="w-[160px]">
+        <SelectTrigger className="w-[190px]">
           <SelectValue placeholder="Category" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All Categories</SelectItem>
-          {categories.map((category) => (
-            <SelectItem key={category.id} value={category.slug}>
-              {category.name}
+          {mainCategoryOptions.map((category) => (
+            <SelectItem key={category.value} value={category.value}>
+              {category.label}
             </SelectItem>
           ))}
         </SelectContent>

@@ -2,7 +2,7 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { ProductCard } from '@/components/product-card'
 import { ShopFilters } from '@/components/shop-filters'
-import { catalogCategories, shopProducts } from '@/lib/catalog'
+import { shopProducts } from '@/lib/catalog'
 
 interface ShopPageProps {
   searchParams: Promise<{
@@ -73,7 +73,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           </h1>
         </div>
 
-        <ShopFilters categories={catalogCategories} />
+        <ShopFilters />
 
         {filteredProducts.length === 0 ? (
           <div className="text-center py-12">
