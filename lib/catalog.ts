@@ -456,10 +456,14 @@ const curatedMarketplaceProducts: Record<string, Product[]> = {
   'luxury-handbags': handbagCollection,
 }
 
-export const searchableProducts: Product[] = [
-  ...catalogProducts,
-  ...menCollection,
+export const shopProducts: Product[] = [
+  ...catalogProducts.filter((product) => product.categories?.slug !== 'handbags'),
   ...handbagCollection,
+]
+
+export const searchableProducts: Product[] = [
+  ...shopProducts,
+  ...menCollection,
 ]
 
 const pageGroups = [

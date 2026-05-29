@@ -2,7 +2,7 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { ProductCard } from '@/components/product-card'
 import { ShopFilters } from '@/components/shop-filters'
-import { catalogCategories, catalogProducts } from '@/lib/catalog'
+import { catalogCategories, shopProducts } from '@/lib/catalog'
 
 interface ShopPageProps {
   searchParams: Promise<{
@@ -17,7 +17,7 @@ interface ShopPageProps {
 
 export default async function ShopPage({ searchParams }: ShopPageProps) {
   const params = await searchParams
-  let filteredProducts = [...catalogProducts]
+  let filteredProducts = [...shopProducts]
 
   if (params.q) {
     const query = params.q.toLowerCase()

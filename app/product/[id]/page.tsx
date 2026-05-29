@@ -3,7 +3,7 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { ProductDetails } from '@/components/product-details'
 import { ProductCard } from '@/components/product-card'
-import { catalogProducts } from '@/lib/catalog'
+import { shopProducts } from '@/lib/catalog'
 
 interface ProductPageProps {
   params: Promise<{ id: string }>
@@ -11,13 +11,13 @@ interface ProductPageProps {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params
-  const product = catalogProducts.find((item) => item.id === id)
+  const product = shopProducts.find((item) => item.id === id)
 
   if (!product) {
     notFound()
   }
 
-  const relatedProducts = catalogProducts
+  const relatedProducts = shopProducts
     .filter((item) => item.category_id === product.category_id && item.id !== id)
     .slice(0, 4)
 
