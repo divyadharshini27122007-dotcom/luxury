@@ -14,6 +14,15 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [query, setQuery] = useState('')
+  const categoryBarClass = scrolled
+    ? 'hidden border-t border-border/70 md:block'
+    : 'hidden border-t border-white/15 bg-transparent md:block'
+  const primaryCategoryLinkClass = scrolled
+    ? 'font-medium text-foreground hover:text-accent'
+    : 'font-medium text-white drop-shadow-sm hover:text-accent'
+  const categoryLinkClass = scrolled
+    ? 'text-foreground/75 hover:text-foreground'
+    : 'text-white/90 drop-shadow-sm hover:text-white'
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -128,15 +137,15 @@ export function Navbar() {
         </div>
       )}
 
-      <div className="hidden border-t border-border/70 bg-background/90 md:block">
+      <div className={categoryBarClass}>
         <div className="mx-auto flex max-w-7xl items-center gap-6 overflow-x-auto px-4 py-2 text-sm sm:px-6 lg:px-8">
-          <Link href="/marketplace" className="font-medium text-foreground hover:text-accent">All</Link>
-          <Link href="/marketplace/today-deals" className="text-foreground/75 hover:text-foreground">Today&apos;s Deals</Link>
-          <Link href="/marketplace/women-fashion" className="text-foreground/75 hover:text-foreground">Women</Link>
-          <Link href="/marketplace/men-fashion" className="text-foreground/75 hover:text-foreground">Men</Link>
-          <Link href="/marketplace/luxury-handbags" className="text-foreground/75 hover:text-foreground">Handbags</Link>
-          <Link href="/marketplace/gift-guide" className="text-foreground/75 hover:text-foreground">Gift Guide</Link>
-          <Link href="/marketplace/customer-service" className="text-foreground/75 hover:text-foreground">Customer Service</Link>
+          <Link href="/marketplace" className={primaryCategoryLinkClass}>All</Link>
+          <Link href="/marketplace/today-deals" className={categoryLinkClass}>Today&apos;s Deals</Link>
+          <Link href="/marketplace/women-fashion" className={categoryLinkClass}>Women</Link>
+          <Link href="/marketplace/men-fashion" className={categoryLinkClass}>Men</Link>
+          <Link href="/marketplace/luxury-handbags" className={categoryLinkClass}>Handbags</Link>
+          <Link href="/marketplace/gift-guide" className={categoryLinkClass}>Gift Guide</Link>
+          <Link href="/marketplace/customer-service" className={categoryLinkClass}>Customer Service</Link>
         </div>
       </div>
     </nav>
