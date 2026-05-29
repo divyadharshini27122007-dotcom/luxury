@@ -14,15 +14,12 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [query, setQuery] = useState('')
-  const categoryBarClass = scrolled
-    ? 'hidden border-t border-border/70 md:block'
-    : 'hidden border-t border-white/15 bg-transparent md:block'
-  const primaryCategoryLinkClass = scrolled
-    ? 'font-medium text-foreground hover:text-accent'
-    : 'font-medium text-white drop-shadow-sm hover:text-accent'
-  const categoryLinkClass = scrolled
-    ? 'text-foreground/75 hover:text-foreground'
-    : 'text-white/90 drop-shadow-sm hover:text-white'
+  const headerBarClass = scrolled
+    ? 'bg-background/80 backdrop-blur-lg border-b border-border shadow-sm'
+    : 'bg-transparent'
+  const categoryBarClass = 'hidden border-t border-white/15 bg-transparent md:block'
+  const primaryCategoryLinkClass = 'font-medium text-foreground drop-shadow-sm hover:text-accent'
+  const categoryLinkClass = 'text-foreground/80 drop-shadow-sm hover:text-foreground'
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -40,60 +37,58 @@ export function Navbar() {
   }, [])
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-background/80 backdrop-blur-lg border-b border-border shadow-sm' 
-        : 'bg-transparent'
-    }`}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex min-h-16 items-center justify-between gap-4 py-3">
-          <Link href="/" className="font-serif text-2xl font-semibold tracking-wider text-foreground">
-            LUXE
-          </Link>
-
-          <form onSubmit={handleSearch} className="hidden flex-1 items-center md:flex max-w-2xl">
-            <div className="relative w-full">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search luxury fashion, beauty, home, gifts"
-                className="h-10 rounded-r-none border-r-0 pl-9"
-              />
-            </div>
-            <Button type="submit" className="h-10 rounded-l-none px-4" aria-label="Search">
-              <Search className="h-4 w-4" />
-            </Button>
-          </form>
-
-          <div className="flex items-center gap-4">
-            <div className="hidden items-center gap-5 lg:flex">
-              <Link href="/marketplace/account-dashboard" className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground">
-                <User className="h-4 w-4" />
-                Account
-              </Link>
-              <Link href="/marketplace/orders-tracking" className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground">
-                <Package className="h-4 w-4" />
-                Orders
-              </Link>
-            </div>
-            <Link href="/cart" className="relative">
-              <ShoppingBag className="h-5 w-5 text-foreground" />
-              {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center font-medium">
-                  {totalItems}
-                </span>
-              )}
+    <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      <div className={headerBarClass}>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex min-h-16 items-center justify-between gap-4 py-3">
+            <Link href="/" className="font-serif text-2xl font-semibold tracking-wider text-foreground">
+              LUXE
             </Link>
-            
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+
+            <form onSubmit={handleSearch} className="hidden flex-1 items-center md:flex max-w-2xl">
+              <div className="relative w-full">
+                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Search luxury fashion, beauty, home, gifts"
+                  className="h-10 rounded-r-none border-r-0 pl-9"
+                />
+              </div>
+              <Button type="submit" className="h-10 rounded-l-none px-4" aria-label="Search">
+                <Search className="h-4 w-4" />
+              </Button>
+            </form>
+
+            <div className="flex items-center gap-4">
+              <div className="hidden items-center gap-5 lg:flex">
+                <Link href="/marketplace/account-dashboard" className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground">
+                  <User className="h-4 w-4" />
+                  Account
+                </Link>
+                <Link href="/marketplace/orders-tracking" className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground">
+                  <Package className="h-4 w-4" />
+                  Orders
+                </Link>
+              </div>
+              <Link href="/cart" className="relative">
+                <ShoppingBag className="h-5 w-5 text-foreground" />
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center font-medium">
+                    {totalItems}
+                  </span>
+                )}
+              </Link>
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
           </div>
         </div>
       </div>
