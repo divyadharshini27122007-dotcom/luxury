@@ -31,6 +31,9 @@ export function Navbar() {
   const categoryLinkClass = scrolled
     ? 'text-foreground/80 drop-shadow-sm hover:text-foreground'
     : 'text-white/90 drop-shadow-sm hover:text-white'
+  const searchInputClass = scrolled
+    ? 'h-9 rounded-r-none border-r-0 bg-background/80 pl-9'
+    : 'h-9 rounded-r-none border-r-0 border-white/50 bg-transparent pl-9 text-white placeholder:text-white/65 shadow-none'
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -56,17 +59,17 @@ export function Navbar() {
               LUXE
             </Link>
 
-            <form onSubmit={handleSearch} className="hidden flex-1 items-center md:flex max-w-2xl">
+            <form onSubmit={handleSearch} className="hidden flex-1 items-center md:flex max-w-xl">
               <div className="relative w-full">
-                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Search className={`pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 ${scrolled ? 'text-muted-foreground' : 'text-white/70'}`} />
                 <Input
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Search luxury fashion, beauty, home, gifts"
-                  className="h-10 rounded-r-none border-r-0 pl-9"
+                  className={searchInputClass}
                 />
               </div>
-              <Button type="submit" className="h-10 rounded-l-none px-4" aria-label="Search">
+              <Button type="submit" className="h-9 rounded-l-none px-3" aria-label="Search">
                 <Search className="h-4 w-4" />
               </Button>
             </form>
